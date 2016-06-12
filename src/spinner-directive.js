@@ -16,11 +16,11 @@ angular.module('angularSpinners')
       },
       template: [
         '<div ng-show="show">',
-        '  <img ng-show="imgSrc" ng-src="{{imgSrc}}" />',
-        '  <div ng-transclude></div>',
+        '  <img ng-if="imgSrc" ng-src="{{imgSrc}}" />',
+        '  <ng-transclude></ng-transclude>',
         '</div>'
       ].join(''),
-      controller: function ($scope, spinnerService) {
+      controller: ['$scope', 'spinnerService', function ($scope, spinnerService) {
 
         // register should be true by default if not specified.
         if (!$scope.hasOwnProperty('register')) {
@@ -66,11 +66,6 @@ angular.module('angularSpinners')
         if ($scope.onLoaded) {
           $scope.onLoaded({ spinnerService: spinnerService, spinnerApi: api });
         }
-
-        // Unregister this spinner if the $destroy event is emitted on scope.
-        $scope.$on('$destroy', function () {
-          spinnerService._unregister($scope.name);
-        });
-      }
+      }]
     };
   });
