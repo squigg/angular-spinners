@@ -33,17 +33,15 @@ angular.module('angularSpinners', [])
       },
       show: function (name) {
         var spinner = spinners[name];
-        if (!spinner) {
-          throw new Error("No spinner named '" + name + "' is registered.");
+        if (spinner) {
+          spinner.show();
         }
-        spinner.show();
       },
       hide: function (name) {
         var spinner = spinners[name];
-        if (!spinner) {
-          throw new Error("No spinner named '" + name + "' is registered.");
+        if (spinner) {
+          spinner.hide();
         }
-        spinner.hide();
       },
       showGroup: function (group) {
         var groupExists = false;
