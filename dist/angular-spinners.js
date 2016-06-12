@@ -37,10 +37,20 @@ angular.module('angularSpinners', [])
           spinner.show();
         }
       },
+      showMany: function (names) {
+        for (var name in names) {
+          this.show(name);
+        }
+      },
       hide: function (name) {
         var spinner = spinners[name];
         if (spinner) {
           spinner.hide();
+        }
+      },
+      hideMany: function (names) {
+        for (var name in names) {
+          this.hide(name);
         }
       },
       showGroup: function (group) {
